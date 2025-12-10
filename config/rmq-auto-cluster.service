@@ -1,0 +1,12 @@
+[Unit]
+Description=RabbitMQ Auto Cluster Setup
+After=network-online.target rabbitmq-server.service
+Wants=network-online.target rabbitmq-server.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/rmq/scripts/rmq-auto-cluster.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
